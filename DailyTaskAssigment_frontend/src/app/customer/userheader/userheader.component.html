@@ -1,0 +1,61 @@
+<div class="">
+  <nav class="navbar navbar-expand-lg bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand">STORE</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse d-flex " id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex w-100 justify-content-between">
+            <div style="margin-left:20px" class="ms-2 d-flex justify-content-between align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" routerLink="/men">Men</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" routerLink="/women">Women</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" routerLink="/children">Children</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Role
+                  </a>  
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a  class="dropdown-item text-dark" href="seller">Seller</a>
+                      <a class="dropdown-item text-dark" href="admin">Admin</a>
+                      <!-- <div class="dropdown-divider text-dark"></div>
+                      <a class="dropdown-item text-dark" href="#">Something else here</a> -->
+                  </div>
+                </li>
+            </div>
+            <div class="d-flex justify-content-end ">
+                <li class="d-flex justify-content-between align-items-center mr-4">
+                  <div class="demo-section">
+                    <mat-icon style="cursor: pointer;" routerLink="/cart" class="cart-icon" [matBadge]="TotalCartItems" >shopping_cart</mat-icon>
+                      <!-- <span class="cdk-visually-hidden">
+                       parul
+                      </span> -->
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link"  *ngIf="!isUserLogin" routerLink="/login">Login</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" style="cursor: pointer;" *ngIf="isUserLogin"  (click)="onLogout()">Log-out</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" routerLink="/register">Sign-Up</a>
+                </li>
+            </div>
+          </ul>     
+        </div> 
+      </div>
+  </nav>
+</div>
+
+        
+

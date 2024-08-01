@@ -1,0 +1,161 @@
+<nav class="navbar navbar-expand-lg bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand">Seller</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex w-100 justify-content-between">
+          <div class="left-navbar d-flex justify-content-center align-items-center">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" routerLink="/seller/addSeller">New seller</a>
+            </li>
+            <li class="nav-item">
+              <a  class="dropdown-item text-dark" routerLink="/seller/product">Products</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Role
+              </a>
+      
+               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <!-- <a  class="dropdown-item text-dark" routerLink="/seller/product">Products</a>
+                  <a class="dropdown-item text-dark" href="/seller/addproduct">Add Product</a>
+                  <div class="dropdown-divider text-dark"></div> -->
+                  <a  class="dropdown-item text-dark" href="/">Customer</a>
+                  <a class="dropdown-item text-dark" href="/admin">Admin</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" *ngIf="!isSellerLogin" routerLink="/seller">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link"  *ngIf="isSellerLogin" (click)="onLogout()">Log-out</a>
+            </li>
+          </div>
+
+          <div class="d-flex justify-content-end "> 
+            <li>
+              
+            </li>
+            <li class="nav-item">
+              <!-- <a class="nav-link" routerLink="/seller/profile">Profile</a> -->
+              <mat-icon class="mr-3" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop" aria-hidden="false" aria-label="Example home icon" fontIcon="person" style="cursor: pointer;"></mat-icon>
+            </li>        
+          </div>
+        </ul>
+      </div>
+    </div>
+</nav>
+
+  <!-- <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
+    Toggle static offcanvas
+  </button> -->
+   
+<div *ngIf="isSellerLogin" class="offcanvas offcanvas-end text-center" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel" right shadow>
+  <div class="offcanvas-header">
+    <div class="editDash d-flex justify-content-center align-items-center">
+      <h3 class="offcanvas-title text-center fw-bold" id="staticBackdropLabel">
+        DashBoard
+      </h3>
+      <span class="ml-2 mb-2"><mat-icon class="mr-3" class="ml-2 mt-2" aria-hidden="false" aria-label="Example  icon" fontIcon="edit_note" (click)="onEditDetails()"></mat-icon></span>
+    </div>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div>
+      <!-- this is enable when user click on edit button -->
+      <form [formGroup]="sellerForm" (ngSubmit)="onSubmit()">
+        <ul *ngIf="editMode" class="nav flex-column d-flex justify-content-center align-items-center" >
+          <li class="nav-item">    
+            <div class="d-flex justify-content-center align-items-center flex-column">
+              <img class="SellerImg" src="https://th.bing.com/th/id/R.c3631c652abe1185b1874da24af0b7c7?rik=XBP%2fc%2fsPy7r3HQ&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fpng-user-icon-circled-user-icon-2240.png&ehk=z4ciEVsNoCZtWiFvQQ0k4C3KTQ6wt%2biSysxPKZHGrCc%3d&risl=&pid=ImgRaw&r=0" alt="" width="150px" height="150px">
+              <div class="item seller-name">         
+                <div class="d-flex justify-content-center align-items-center">
+                  <input  formControlName="firstName" class="fname sidenav-items form-control bg-transparent text-white" />
+                  <input  formControlName="lastName" class="lname sidenav-items form-control bg-transparent text-white" />
+                </div>
+              </div>
+            </div>
+          </li>
+          <div class="mt-5 sidenav-list">
+              <li class="nav-item">
+                <div class="d-flex justify-content-center align-items-center">
+                  <mat-icon class="mr-3" aria-hidden="false" aria-label="Example icon" fontIcon="mail"></mat-icon>
+                  <input  formControlName="email" class="sidenav-items form-control bg-transparent text-white" />
+                </div>
+              </li>
+              <li class="nav-item">
+                <div class="d-flex justify-content-center align-items-center">
+                  <mat-icon class="mr-3" aria-hidden="false" aria-label="Example icon" fontIcon="phone_in_talk"></mat-icon>
+                  <input  formControlName="phone" class="sidenav-items form-control bg-transparent text-white" />
+                </div>
+              </li>
+              <li class="nav-item">
+                <div class="d-flex justify-content-center align-items-center">
+                  <mat-icon class="mr-3" aria-hidden="false" aria-label="Example icon" fontIcon="location_on"></mat-icon>
+                  <input  formControlName="address" class="sidenav-items form-control bg-transparent text-white" />
+                </div>
+              </li>
+              <li class="nav-item">
+                <div class="d-flex justify-content-center align-items-center">
+                  <mat-icon class="mr-3" aria-hidden="false" aria-label="Example icon" fontIcon="trending_up"></mat-icon>
+                  <input  formControlName="age" type="number" class="sidenav-items form-control bg-transparent text-white" />
+                </div>
+              </li>
+              <li class="nav-item">
+                <div class="d-flex justify-content-center align-items-center">
+                  <mat-icon class="mr-3" aria-hidden="false" aria-label="Example icon" fontIcon="wc"></mat-icon>
+                  <input  formControlName="gender" class="sidenav-items form-control bg-transparent text-white" />
+                </div>
+              </li>
+          </div>
+          <button type="submit" class="btn btn-success mt-3">Save</button>
+        </ul>
+      </form>
+
+      <!-- this is enable when user wants to see his details-->
+       <ul *ngIf="!editMode && sellerUser" class="nav flex-column d-flex justify-content-center align-items-center" >
+        <li class="nav-item">    
+          <div class="d-flex justify-content-center align-items-center flex-column">
+            <img class="SellerImg" src="https://th.bing.com/th/id/R.c3631c652abe1185b1874da24af0b7c7?rik=XBP%2fc%2fsPy7r3HQ&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fpng-user-icon-circled-user-icon-2240.png&ehk=z4ciEVsNoCZtWiFvQQ0k4C3KTQ6wt%2biSysxPKZHGrCc%3d&risl=&pid=ImgRaw&r=0" alt="" width="150px" height="150px">
+            <div class="item seller-name">
+              <div *ngIf="sellerUser.activeStatus" class="d-flex justify-content-center align-items-center">
+                <mat-icon class="mr-3" style="background-color: green;" aria-hidden="false" aria-label="Example  icon" fontIcon="check_circle" class=""></mat-icon>
+              </div> 
+              <div *ngIf="!sellerUser.activeStatus" class="d-flex justify-content-center align-items-center">
+                <mat-icon class="mr-3" style="background-color: red;" aria-hidden="false" aria-label="Example  icon" fontIcon="error" class=""></mat-icon>
+              </div>          
+              <h2 style="font-family: cursive;margin-left: 10px;
+              margin-top: 13px;">{{sellerUser.firstName + " " + sellerUser.lastName | uppercase}}</h2>
+            </div>
+          </div>
+        </li>
+        <div class="mt-5 sidenav-list">
+            <li class="nav-item">
+              <div class="d-flex justify-content-center align-items-center">
+              <mat-icon class="mr-3" aria-hidden="false" aria-label="Example  icon" fontIcon="mail" class=""></mat-icon> <p class="sidenav-items">{{sellerUser.email}}</p>            </div>
+            </li>
+            <li class="nav-item">
+              <div class="d-flex justify-content-center align-items-center">
+                <mat-icon class="mr-3" aria-hidden="false" aria-label="Example  icon" fontIcon="phone_in_talk" class=""></mat-icon><p class="sidenav-items">{{sellerUser.phone}}</p>            </div>
+            </li>
+            <li class="nav-item">
+              <div class="d-flex justify-content-center align-items-center">
+                <mat-icon class="mr-3" aria-hidden="false" aria-label="Example  icon" fontIcon="location_on" class=""></mat-icon><p class="sidenav-items">{{sellerUser.address | uppercase}}</p>              </div>
+            </li>
+            <li class="nav-item">
+              <div class="d-flex justify-content-center align-items-center">
+                <mat-icon class="mr-3" aria-hidden="false" aria-label="Example  icon" fontIcon="trending_up" class=""></mat-icon><p class="sidenav-items">{{sellerUser.age}} yrs.</p>          </div>
+            </li>
+            <li class="nav-item">
+              <div class="d-flex justify-content-center align-items-center">
+                <mat-icon class="mr-3" aria-hidden="false" aria-label="Example  icon" fontIcon="wc" class=""></mat-icon><p class="sidenav-items">{{sellerUser.gender | uppercase}}</p>             </div> 
+            </li>
+            
+        </div>
+      </ul> 
+    </div>
+  </div>
+</div>
+ 

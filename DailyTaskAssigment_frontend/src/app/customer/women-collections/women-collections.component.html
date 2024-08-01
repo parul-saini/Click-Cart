@@ -1,0 +1,9 @@
+<!-- <p>women-collections works!</p> -->
+<app-userheader></app-userheader>
+<ngx-ui-loader></ngx-ui-loader>
+<div class="container-fluid our-store pb-5 " style="background:white">
+    <div class="container homeImage2">
+    </div>
+  </div>
+  
+<app-store *ngIf="FOOTWEAR.length>0" class="women-store" [items]="FOOTWEAR" heading="Women Store"></app-store>

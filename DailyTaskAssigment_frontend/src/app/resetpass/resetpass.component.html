@@ -1,0 +1,24 @@
+<p>resetpass works!</p>
+<div class="reset-password-container">
+    <h2>Reset Password</h2>
+    <form [formGroup]="resetPasswordForm" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="otp">OTP:</label>
+        <input id="otp" formControlName="otp" type="text" />
+      </div>
+      <div>
+        <label for="newPassword">New Password:</label>
+        <input id="newPassword" formControlName="newPassword" type="text" />
+        <div *ngIf="resetPasswordForm.get('newPassword')?.hasError('pattern')" class="text-danger">*Strong Password</div>
+      </div>
+      <div>
+        <label for="confirmPassword">Confirm Password:</label>
+        <input id="confirmPassword" formControlName="confirmPassword" type="text" />
+        <div *ngIf="resetPasswordForm.errors?.['mismatch'] && resetPasswordForm.get('confirmPassword')?.touched" class="text-danger">*Password Doesn't match</div>
+      </div>
+      <!-- <button type="submit" [disabled]="!resetPasswordForm.valid">Reset Password</button> -->
+      <button type="submit">Reset Password</button>
+    </form>
+  </div>
+  
+  

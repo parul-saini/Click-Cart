@@ -1,0 +1,80 @@
+nav a{
+    color: white !important;
+}
+.dropdown-menu a{
+  color: black !important;
+}
+
+
+.mat-icon{
+    color: white;
+    margin-top: 4px;
+}
+
+.offcanvas-body {
+  text-align: left;
+}
+
+.offcanvas .nav-item {
+  margin-bottom: 10px;
+}
+
+.offcanvas .nav-item strong {
+  display: inline-block;
+  width: 100px;
+}
+
+.offcanvas{
+  background: hsl(206.49deg 43.57% 34%);
+  color: white;
+}
+  
+
+.SellerImg{
+  border: 8px solid white;
+    border-radius: 50%;
+}
+
+.sidenav-list{
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+}
+
+.sidenav-list p{
+  margin-top: 12px;
+  margin-top: 12px;
+    font-size: 20px;
+    margin-left: 20px;
+}
+
+.seller-name{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 9px;
+}
+
+.bg-transparent {
+  background: transparent !important;
+}
+
+.fname{
+
+  border-right: none;
+  margin-right: 2px;
+  border-radius: 4px 5px 5px 4px;
+  width: 124px;
+ 
+}
+
+.lname{
+  border-left: none;
+  width: 7rem;
+  border-radius-left: none;
+  border-radius: 5px 5px 4px 5px;
+}
+
+.left-navbar li{
+  margin-right: 9px;
+}

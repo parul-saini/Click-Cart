@@ -1,0 +1,9 @@
+<h2 mat-dialog-title class="text-danger">Delete file</h2>
+<mat-dialog-content>
+  Would you like to delete ?
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="cancel()">No</button>
+  <button style="background-color: red;" mat-button (click)="confirm()" cdkFocusInitial>Yes</button>
+</mat-dialog-actions>
+

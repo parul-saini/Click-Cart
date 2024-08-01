@@ -1,0 +1,37 @@
+table {
+    min-width: 80% !important;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    border: 1px solid #ddd !important;
+    padding: 8px !important;
+  }
+  
+
+  button {
+    margin-right: 5px;
+  }
+
+  input{
+    margin-right: 3rem;
+    border: none;
+    border-bottom: 2px solid;
+    border-radius: 10px;
+    padding: 10px;
+  }
+  
+h2{
+  font-family: fantasy;
+}
+.btn{
+  // background: #bbd8e1;
+  background: #2f8799;
+  font-weight: bold;
+  color: white;
+}
+tr th{
+  // background: #bbd8e1;
+  background: #2f8799;
+  color: white;
+}

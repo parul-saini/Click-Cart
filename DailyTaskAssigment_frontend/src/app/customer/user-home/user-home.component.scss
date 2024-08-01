@@ -1,0 +1,60 @@
+h2{
+    font-family: fantasy;
+}
+
+.homeImage{
+    background-image: url("https://wallpapers.com/images/high/shopping-girl-fashion-bmcc1ws4ptcip9dl.webp");
+    // background-image: url("https://wallpapers.com/images/high/e-commerce-1920-x-1080-wallpaper-tb4uqckgoo0883zw.webp");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 85vh;
+}
+.addToCartBtn{
+    background-color: #b85e5ebd;
+    color: white;
+}
+.btn{
+    background-color: #b85e5ebd;
+    color: white;
+}
+
+.homeHeading{
+    margin: 40px;
+    font-size: 3rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #821d31c7;
+    margin-bottom: 3rem;
+    font-family: cursive;
+    font-style: italic;
+}
+
+.homeImage2{
+//  background-image: url("https://wallpapers.com/images/high/e-commerce-1920-x-1080-wallpaper-tb4uqckgoo0883zw.webp");
+ background-image: url("../../../assets/bg1.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 85vh;
+}
+.homeImage3{
+ background-image: url("../../../assets/bg5.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 85vh;
+}
+.homeImage4{
+ background-image: url("../../../assets/bg6.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 85vh;
+}
+.homeImage5{
+ background-image: url("../../../assets/bg7.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 100vh;
+}

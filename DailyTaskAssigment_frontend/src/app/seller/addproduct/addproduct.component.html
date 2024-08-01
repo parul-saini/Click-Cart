@@ -1,0 +1,129 @@
+<app-seller-header></app-seller-header>
+<!-- <p>addproduct works!</p> -->
+
+<div class="container-fluid">
+    <div class="row" style="height: 100vh;">
+        <div  class="col-12">
+            <mat-stepper>
+                <mat-step label="Step 1" state="phone">
+                  <h2 class="text-center">Add Product Information</h2>
+                  <div style=" width: 70%;"   class="container">
+                    <form action="" [formGroup]="addProductForm" (ngSubmit)="onSubmit()">
+                    <div>
+                        <mat-form-field style="width: 50%;" class="w-100">
+                            <mat-label>Product Name</mat-label>
+                            <mat-error *ngIf="addProductForm.get('productName')?.invalid && addProductForm.get('productName')?.touched">
+                            Product Name is required
+                            </mat-error>
+                            <input matInput formControlName="productName">
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field style="width: 50%;" class="w-100">
+                            <mat-label>Image Url</mat-label>
+                            <input matInput formControlName="imageUrl">
+                            <mat-error *ngIf="(addProductForm.get('imageUrl')?.hasError('pattern') && addProductForm.get('imageUrl')?.touched)">
+                            Enter Valid Url
+                            </mat-error>
+                            <mat-error *ngIf="addProductForm.get('imageUrl')?.hasError('required') && addProductForm.get('imageUrl')?.touched">
+                            Image Url is required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field class="w-100">
+                            <mat-label>Product Description</mat-label>
+                            <textarea matInput formControlName="productDescription"></textarea>
+                            <mat-error *ngIf="addProductForm.get('productDescription')?.invalid && addProductForm.get('productDescription')?.touched">
+                            Product Description is required
+                            </mat-error>
+                          </mat-form-field>
+                        
+                    </div>
+                    <div>
+                        <mat-form-field class="w-100">
+                            <mat-label>Product Category</mat-label>
+                            <mat-select formControlName="productCategory">
+                                <mat-option value="women">Women</mat-option>
+                                <mat-option value="men">Men</mat-option>
+                                <mat-option value="children">Children</mat-option>
+                            </mat-select>
+                              <mat-error *ngIf="addProductForm.get('productCategory')?.invalid && addProductForm.get('productCategory')?.touched">
+                                Product Category is required
+                              </mat-error>
+                          </mat-form-field>
+                    </div>
+                    <button mat-button matStepperNext (click)="onSubmit()">Submit</button>
+                </form>
+                  </div>    
+                  <div>                                    
+                    <button mat-button matStepperNext>Next</button>
+                  </div>
+                </mat-step>
+
+                <!-- 2 step -->
+                <mat-step label="Step 2" state="chat">
+                  <h2 class="text-center">Pricing Information</h2>
+                  <div style=" width: 70%;" class="container">
+                    <form action="" [formGroup]="productInfo" (ngSubmit)="onSubmit2()">
+                    <div>
+                        <mat-form-field floatLabel="always" class="mr-2" style="width: 47%;">
+                            <mat-label>Amount</mat-label>
+                            <input matInput type="number" formControlName="amount" class="example-right-align" placeholder="0" />
+                            <span matTextPrefix>$&nbsp;</span>
+                            <span matTextSuffix>.00</span>
+                            <mat-error *ngIf="addProductForm.get('amount')?.invalid && addProductForm.get('amount')?.touched">
+                                Amount is required
+                              </mat-error>
+                          </mat-form-field>
+                          <mat-form-field style="width: 50%;" class="w-50">
+                            <mat-label>Quantity</mat-label>
+                            <input matInput type="number" formControlName="quantity">
+                            <mat-error *ngIf="addProductForm.get('quantity')?.invalid && addProductForm.get('quantity')?.touched">
+                              Quantity is required
+                            </mat-error>
+                          </mat-form-field>
+                       
+                    </div>
+                    <div>
+                      <mat-form-field style="width: 50%;" class="w-100">
+                          <mat-label>Ratings</mat-label>
+                          <input matInput type="number" formControlName="rating">
+                          <mat-error *ngIf="addProductForm.get('rating')?.invalid && addProductForm.get('rating')?.touched">
+                          Rating Of product is required
+                          </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <!-- <button mat-button matStepperNext (click)="onSubmit2()">Submit</button> -->
+                   </form>
+                </div>  
+                <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button matStepperNext  (click)="onSubmitfinal()">Next and Submit</button>
+                </div>
+                </mat-step>
+
+                <!-- 3 step -->
+                <mat-step label="Step 3">
+                  <h2 class="text-center">You're welcome.</h2>
+                  <div class="text-center">
+                      <button class="text-center" routerLink="/seller/product" class="btn btn-info">See your Products</button>
+                  </div>
+                </mat-step>
+              
+                <!-- Icon overrides. -->
+                <ng-template matStepperIcon="phone">
+                  <mat-icon>call_end</mat-icon>
+                </ng-template>
+                <ng-template matStepperIcon="chat">
+                  <mat-icon>forum</mat-icon>
+                </ng-template>
+            </mat-stepper>
+        </div>
+
+        <!-- <div style="background-color: antiquewhite;" class="col-12">
+         </div> -->
+    </div>
+</div>
+
+

@@ -1,0 +1,104 @@
+<app-userheader></app-userheader>
+<ngx-ui-loader></ngx-ui-loader>
+<div class="container-fluid mt-5">
+    <div class="container">
+        <div style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);" class="row d-flex justify-content-center align-items-center p-3">
+            <div class="col-10">
+                <h2 class="fs-4 text-justify">Welcome to Your Products!</h2>              
+            </div>
+            <div class="col-2 d-flex justify-content-end">
+               <button class=" m-2 btn " (click)="clearCart()">Delete All</button> 
+            </div>
+        </div>
+    </div>
+    <div *ngIf="AllUser.length>0" class="container mt-5">
+        <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)" class="mat-elevation-z8">
+            <!-- Define columns with mat-sort-header -->
+            <ng-container matColumnDef="productName">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                Product
+              </th>
+              <td mat-cell *matCellDef="let element"> {{element.productName | uppercase}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="productDescription">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                Description
+              </th>
+              <td mat-cell *matCellDef="let element"> {{element.productDescription }} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="productCategory">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                Category
+              </th>
+              <td mat-cell *matCellDef="let element"> {{element.productCategory | uppercase}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="imageUrl">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                Image
+              </th>
+              <td mat-cell *matCellDef="let element"> 
+                <img src={{element.imageUrl}} alt="" srcset="" width="50px" height="50px"> 
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="actualPrice">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                Price
+              </th>
+              <td mat-cell *matCellDef="let element"> {{element.amount +' ' +"$"}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="amount">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                SubTotal
+              </th>
+              <td mat-cell *matCellDef="let element"> {{element.amount * element.quantity +' '+ "$"}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="quantity">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                Quantity 
+              </th>
+              <td mat-cell *matCellDef="let element"> {{element.quantity}}
+                 </td>
+            </ng-container>
+      
+            <ng-container matColumnDef="actions">
+              <th class="text-center" mat-header-cell *matHeaderCellDef>
+                Actions
+              </th>
+              <td mat-cell *matCellDef="let element; let i = index;" class="text-center">
+                 <div class="removecartBtn d-flex justify-content-center align-items-center">
+                   <mat-icon aria-hidden="false" aria-label="Example  icon" fontIcon="close" class="DeleteIcon" (click)="RemoveFromCart(element.productId)" style=" cursor: pointer;" class="cross fw-3"></mat-icon>
+                   <!-- <button mat-raised-button (click)="openDialog('0ms', '0ms',element.pId)">Open dialog without animation</button> -->
+                 </div>
+             
+              </td>
+            </ng-container>
+      
+            <!-- Header and row definitions -->
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            <!-- <tr mat-footer-row *matFooterRowDef="['actions']"></tr> -->
+         </table>     
+    </div>
+    <div *ngIf="AllUser.length==0" class="container mt-5">
+      <div class="d-flex justify-content-center align-items-center flex-column">
+          <!-- <h1 class="text-center">No Product</h1> -->
+           <img src="https://cdni.iconscout.com/illustration/free/thumb/free-empty-cart-4085814-3385483.png?f=webp" alt="empty-cart" srcset="">
+        </div>
+    </div>
+    <div *ngIf="AllUser.length>0" class="container mt-3" style="padding: 0px 23px;">
+      <div style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);" class="row d-flex justify-content-center align-items-center p-3">
+          <div class="col-9">
+              
+          </div>
+          <div class="col-3 d-flex justify-content-end">
+             <h2>Total Amount: {{TotalAmount }}$</h2>
+          </div>
+      </div>
+  </div>
+</div>

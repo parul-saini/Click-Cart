@@ -1,0 +1,97 @@
+<app-admin-header>
+</app-admin-header>
+<!-- <p>admin-register works!</p> -->
+
+<div class="container-fluid mt-3">
+    <div class="container justify-content-center align-center d-flex">
+        <form action="" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+            <h2 class="text-center mb-4">Registeration Form As Admin</h2>
+            <div class="form-group mb-0 d-flex">
+           
+               <div class="form-group mr-2">
+                  <input type="text" class="form-control" id="firstName" name="firstName" placeholder=" FirstName" formControlName="firstName">   
+                  <div *ngIf="(myForm.get('firstName')?.invalid && myForm.get('firstName')?.touched )" class="text-danger">*firstName is required</div> 
+                  <div *ngIf="myForm.get('firstName')?.hasError('minlength')" class="text-danger">
+                  *Minimum length 3 is required </div> 
+               </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="LastName" formControlName="lastName">   
+                    <div *ngIf="(myForm.get('lastName')?.invalid && myForm.get('lastName')?.touched )" class="text-danger">*lastName is required</div>   
+                </div>
+            </div>
+
+              <div class="form-group">
+                <!-- <label for="email">Email</label> -->
+                <input type="text" class="form-control" id="email" name="email" placeholder="Email" formControlName="email">   
+                <div *ngIf="(myForm.get('email')?.invalid && myForm.get('email')?.touched )" class="text-danger">*Email is required</div> 
+                <div *ngIf="myForm.get('email')?.hasError('email')" class="text-danger">*Invalid Email </div> 
+              </div>
+               
+              <div class="form-group d-flex">
+                <div class="form-group mr-2">
+                  <!-- <label for="phone">Phone</label> -->
+                  <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone" formControlName="phone">   
+                  <div *ngIf="(myForm.get('phone')?.invalid && myForm.get('phone')?.touched )" class="text-danger">*Phone is required</div> 
+                  <div *ngIf="myForm.get('phone')?.hasError('maxlength') || myForm.get('phone')?.hasError('minlength')" class="text-danger">*Max length 10 is required </div> 
+                </div>
+                <div class="form-group">
+                  <!-- <label for="age">Age</label> -->
+                  <input type="number"  class="form-control" id="age" name="age" placeholder="Age" formControlName="age">   
+                  <div *ngIf="(myForm.get('age')?.invalid && myForm.get('age')?.touched )" class="text-danger">*Age is required</div> 
+                  <div *ngIf="myForm.get('age')?.hasError('min')" class="text-danger">
+                      *Age can't be negative </div> 
+                </div>
+              </div>
+
+              <div class="form-group">
+                <!-- <label for="address">Address</label> -->
+                <input type="text" class="form-control" id="address" name="address" placeholder="Address" formControlName="address">   
+                <div *ngIf="(myForm.get('address')?.invalid && myForm.get('address')?.touched )" class="text-danger">*Address is required</div> 
+             
+              </div>
+
+              <div class="form-group d-flex">
+                <div class="form-group mr-2">
+                  <input type="text"  class="form-control" id="password" name="password" placeholder="Password" formControlName="password" (blur)="onPasswordBlur()"> 
+                  <div *ngIf="(myForm.get('password')?.hasError('pattern') && myForm.get('password')?.touched)" class="text-danger">
+                    {{ passwordErrorMessage }}
+                  </div> 
+                  <div *ngIf="myForm.get('password')?.hasError('minlength')" class="text-danger">
+                      *Min length of password is 8 
+                  </div>      
+                  <!-- <div *ngIf="myForm.get('password')?.hasError('pattern')" class="text-danger">
+                    {{ showPasswordMsg('Password must be 8 characters long and include at least one uppercase letter, one special character, and one number.') }}
+                  </div>  -->
+                </div>
+                <div class="form-group">
+                  <input type="text"  class="form-control" id="confirmPassword" name="confirmPassword" placeholder="ConfirmPassword" formControlName="confirmPassword">   
+                  <div *ngIf="(myForm.get('confirmPassword')?.invalid && myForm.get('confirmPassword')?.touched )" class="text-danger">*ConfirmPassword is required</div> 
+                  <div *ngIf="myForm.errors?.['mismatch'] && myForm.get('confirmPassword')?.touched" class="text-danger">{{showSuccess("Passwords do not match")}}</div> 
+                </div>
+              </div>
+
+
+              <div class="form-group">
+                <label>Choose your gender</label>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" id="male" value="male" formControlName="gender">
+                  <label class="form-check-label" for="male">Male</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" id="female" value="female" formControlName="gender" checked>
+                  <label class="form-check-label" for="female">Female</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" id="other" value="other" formControlName="gender">
+                  <label class="form-check-label" for="other">Other</label>
+                </div>
+                <div *ngIf="myForm.get('gender')?.invalid && myForm.get('gender')?.touched" class="text-danger">Please choose a gender</div>
+              </div>
+               
+
+              <!-- <button class="btn btn-info w-100" [disabled]="myForm.invalid">Register</button> -->
+              <button class="btn btn-info w-100" >Register As Admin</button>
+              <div class="text-Bold text-info">*Already have an account <a routerLink="/admin">Login</a></div>
+        </form>
+    </div>
+</div>

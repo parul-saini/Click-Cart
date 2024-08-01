@@ -1,0 +1,27 @@
+<!-- <p>foremail works!</p>
+
+<a routerLink="/resetpassword"><p>Forgot Password?</p></a>  -->
+
+
+<div class="container">
+    <div class="row">
+      <div class="col-md-6 outer-box">
+        <form class="login-form" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+          <h2 class="text-center mb-4">Enter Your Email</h2>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" id="username" name="email" placeholder="Enter your Email" formControlName="email">   
+            <div *ngIf="(myForm.get('email')?.invalid && myForm.get('email')?.touched )" class="text-danger">*Email is required</div> 
+            <!-- <div *ngIf="myForm.get('email')?.hasError('email')" class="text-danger">{{ showerror()}}</div>   -->
+          </div>
+
+        
+          <button type="submit" class="btn btn-primary btn-block">
+            Login</button>
+       
+        </form>
+
+       
+      </div>
+    </div>
+  </div>

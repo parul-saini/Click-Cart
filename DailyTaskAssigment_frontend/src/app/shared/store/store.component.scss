@@ -1,0 +1,58 @@
+
+  
+  // Additional styling for different stores
+  :host-context(.men-store) {
+    .container-fluid {
+      background-color: #f0f0f0; // Example for men store
+    }
+    .homeHeading{
+        color: #134174;
+        font-weight: bold;
+    }
+    .addToCartBtn{
+        background-color:rgb(23 79 140);
+        color: white;
+    }
+    .btn{
+        background-color: rgb(23 79 140);
+        color: white;
+    }
+    
+  }
+  
+  :host-context(.women-store) {
+    .container-fluid {
+      background-color: #fde7e1; // Example for women store
+    }
+    .addToCartBtn{
+        background-color: #b85e5ebd;
+        color: white;
+    }
+    .btn{
+        background-color: #b85e5ebd;
+        color: white;
+    }
+    .homeHeading{
+        color: #b85e5ebd;
+        font-weight: bold;
+    }
+  }
+  
+  :host-context(.children-store) {
+    .container-fluid {
+      background-color: #e1f7e1; // Example for children store
+    }
+    .homeHeading{
+        color: rgb(211 114 85 / 88%);
+        font-weight: bold;
+     }
+     .addToCartBtn{
+        background-color:rgb(211 114 85 / 88%);
+        color: white;
+     }
+     .btn{
+        background-color: rgb(211 114 85 / 88%);
+        color: white;
+     }
+  }
+  

@@ -1,0 +1,33 @@
+<app-admin-header>
+</app-admin-header>
+<p>admin-login works!</p>
+
+<div class="container">
+    <div class="row">
+      <div class="col-md-6 outer-box">
+        <form class="login-form" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+          <h2 class="text-center mb-4">Login</h2>
+          <div class="form-group">
+            <label for="email">email</label>
+            <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email" formControlName="email">   
+            <div *ngIf="(myForm.get('email')?.invalid && myForm.get('email')?.touched )" class="text-danger">*email is required</div> 
+            <div *ngIf="myForm.get('email')?.hasError('minlength')" class="text-danger">*Minimum length 3 is required </div> 
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password"  formControlName="password">
+            <div *ngIf="myForm.get('password')?.invalid && myForm.get('password')?.touched" class="text-danger">*Password is required</div> 
+            <!-- <div *ngIf="myForm.get('password')?.hasError('required')">*Password is required</div>  -->
+          </div>
+
+          <a routerLink="/email">Forgot Password?</a> 
+          <button type="submit" class="btn btn-primary btn-block">Login</button>
+          <p>No Account<a routerLink="/admin/newadmin"> Signup </a></p>
+        </form>
+
+       
+      </div>
+    </div>
+  </div>
+
